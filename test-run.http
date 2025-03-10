@@ -8,9 +8,20 @@ Content-Type: application/json
 //  "processingTimeMillis": 80000
 //}
 
+//Аккаунт: "acc-5" тест 2
+//{
+//"ratePerSecond": 2,
+//"testCount": 100,
+//"processingTimeMillis": 60000
+//}
+
+
 //Аккаунт: "acc-5"
+//
+//Тест 3:
 {
 "ratePerSecond": 2,
-"testCount": 100,
+"testCount": 500,
 "processingTimeMillis": 60000
 }
+
