@@ -1,0 +1,8 @@
+Аккаунт: "acc-12"
+
+Тест:
+{
+  "ratePerSecond": 1000,
+  "testCount": 200000,
+  "processingTimeMillis": 50000
+}

@@ -3,7 +3,10 @@ package ru.quipy.payments.logic
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import kotlinx.coroutines.*
+import okhttp3.ConnectionPool
+import okhttp3.Dispatcher
 import okhttp3.OkHttpClient
+import okhttp3.Protocol
 import okhttp3.Request
 import okhttp3.RequestBody
 import org.slf4j.LoggerFactory
@@ -35,8 +38,17 @@ class PaymentExternalSystemAdapterImpl(
 
     private val timeout = Duration.ofSeconds(2)
 
+    val connectionPool = ConnectionPool(maxIdleConnections = 1000, keepAliveDuration = 5, TimeUnit.MINUTES)
+    val dispatcher = Dispatcher().apply {
+        maxRequests = 1000
+        maxRequestsPerHost = 1000
+    }
+
     private val client = OkHttpClient.Builder()
         .callTimeout(timeout)
+        .protocols(listOf(Protocol.HTTP_2, Protocol.HTTP_1_1))
+        .connectionPool(connectionPool)
+        .dispatcher(dispatcher)
         .build()
 
     private val rateLimiter = FixedWindowRateLimiter(
