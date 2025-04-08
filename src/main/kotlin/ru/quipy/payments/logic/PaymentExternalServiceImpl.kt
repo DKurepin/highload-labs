@@ -40,7 +40,7 @@ class PaymentExternalSystemAdapterImpl(
 
     val connectionPool = ConnectionPool(maxIdleConnections = 1000, keepAliveDuration = 5, TimeUnit.MINUTES)
     val dispatcher = Dispatcher().apply {
-        maxRequests = 1000
+        maxRequests = 10000
         maxRequestsPerHost = 1000
     }
 
