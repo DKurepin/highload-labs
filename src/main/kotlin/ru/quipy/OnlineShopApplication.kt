@@ -18,5 +18,9 @@ class OnlineShopApplication {
 }
 
 fun main(args: Array<String>) {
+    // System.setProperty("jdk.httpclient.connectionPoolSize", "10000")
+   // System.setProperty("jdk.httpclient.keepalive.timeout", "60")
+   // System.setProperty("jdk.httpclient.windowsize", "65536")
+
     runApplication<OnlineShopApplication>(*args)
 }
